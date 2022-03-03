@@ -31,74 +31,15 @@ var client = new discord_js_1.default.Client({
         discord_js_1.Intents.FLAGS.GUILD_MESSAGES
     ],
 });
-
-// const command = require('./command')
-
-client.on('ready', function () {
-    console.log('The bot is loading');
-});
 client.on('ready', function () {
     console.log('Loading 100%');
 });
 client.on('ready', function () {
     console.log('Bot is klaar voor gebruik');
 });
-client.on('messageCreate', function (msg) {
-    if (msg.content === '?rooster') {
-        msg.reply({
-            content: 'https://sa-nijmegen.xedule.nl/',
-        });
-    }
-});
-
-const AntiSpam = require('discord-anti-spam');
-
-client.on('message', (message) => antiSpam.message(message));
-
-const antiSpam = new AntiSpam({
-    warnThreshold: 5, // Amount of messages sent in a row that will cause a warning.
-    muteThreshold: 10, // Amount of messages sent in a row that will cause a mute
-    maxInterval: 2000, // Amount of time (in milliseconds) in which messages are considered spam.
-    warnMessage: '{@user}, Wil jij godverdomme stoppen met spammen danku.', // Message that will be sent in chat upon warning a user.
-    muteMessage: '{user_tag} has been muted for spamming.',// Message that will be sent in chat upon muting a user.
-    maxDuplicatesWarning: 6, // Amount of duplicate messages that trigger a warning.
-    maxDuplicatesMute: 8, // Ammount of duplicate message that trigger a mute.
-    ignoredPermissions: [ 'ADMINISTRATOR'], // Bypass users with any of these permissions.
-    ignoreBots: true, // Ignore bot messages.
-    verbose: true, // Extended Logs from module.
-    ignoredMembers: [], // Array of User IDs that get ignored.
-    muteRoleName: "Muted", // Name of the role that will be given to muted users!
-    removeMessages: false // If the bot should remove all the spam messages when taking action on a user!
-    // And many more options... See the documentation.
-});
-
-client.on('message', (message) => antiSpam.message(message)); 
-
-client.on('message', function (message) { return antiSpam.message(message); });
-client.on('messageCreate', function (msg) {
-    if (msg.content === '?help') {
-        msg.reply({
-            content: '- ?rooster',
-        });
-    }
-});
 
 
-client.on('messageCreate', function (msg) {
-    if (msg.content === '?help') {
-        msg.reply({
-            content: '- Meer komt eraan!',
-        });
-    }
-});
 
-client.on('messageCreate', function (msg) {
-    if (msg.content === '?kiki') {
-        msg.reply({
-            content: 'https://www.youtube.com/watch?v=_uPTHKobAAc&t=19s&ab_channel=PrimeOption',
-        });
-    }
-});
 
 
 client.login(process.env.TOKEN);
